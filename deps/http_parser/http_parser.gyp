@@ -8,9 +8,7 @@
         'include_dirs': [ '.' ],
       },
       'defines': [ 'HTTP_PARSER_STRICT=0' ],
-      'sources': [
-        './http_parser.c',
-      ],
+      'sources': [ './http_parser.c', ],
     },
 
     {
