@@ -1,4 +1,4 @@
-WAF=python tools/waf-light
+WAF=python2 tools/waf-light
 
 web_root = ryan@nodejs.org:~/web/nodejs.org/
 
@@ -33,40 +33,40 @@ uninstall:
 	@$(WAF) uninstall
 
 test: all
-	python tools/test.py --mode=release simple message
+	python2 tools/test.py --mode=release simple message
 
 test-http1: all
-	python tools/test.py --mode=release --use-http1 simple message
+	python2 tools/test.py --mode=release --use-http1 simple message
 
 test-valgrind: all
-	python tools/test.py --mode=release --valgrind simple message
+	python2 tools/test.py --mode=release --valgrind simple message
 
 test-all: all
-	python tools/test.py --mode=debug,release
+	python2 tools/test.py --mode=debug,release
 
 test-all-http1: all
-	python tools/test.py --mode=debug,release --use-http1
+	python2 tools/test.py --mode=debug,release --use-http1
 
 test-all-valgrind: all
-	python tools/test.py --mode=debug,release --valgrind
+	python2 tools/test.py --mode=debug,release --valgrind
 
 test-release: all
-	python tools/test.py --mode=release
+	python2 tools/test.py --mode=release
 
 test-debug: all
-	python tools/test.py --mode=debug
+	python2 tools/test.py --mode=debug
 
 test-message: all
-	python tools/test.py message
+	python2 tools/test.py message
 
 test-simple: all
-	python tools/test.py simple
+	python2 tools/test.py simple
 
 test-pummel: all
-	python tools/test.py pummel
+	python2 tools/test.py pummel
 
 test-internet: all
-	python tools/test.py internet
+	python2 tools/test.py internet
 
 UVTEST += simple/test-assert
 UVTEST += simple/test-buffer
@@ -251,10 +251,10 @@ UVTEST += simple/test-child-process-deprecated-api
 
 
 test-uv: all
-	NODE_USE_UV=1 python tools/test.py $(UVTEST)
+	NODE_USE_UV=1 python2 tools/test.py $(UVTEST)
 
 test-uv-debug: all
-	NODE_USE_UV=1 python tools/test.py --mode=debug $(UVTEST)
+	NODE_USE_UV=1 python2 tools/test.py --mode=debug $(UVTEST)
 
 
 build/default/node: all
@@ -338,10 +338,10 @@ bench-idle:
 	./node benchmark/idle_clients.js &
 
 jslint:
-	PYTHONPATH=tools/closure_linter/ python tools/closure_linter/closure_linter/gjslint.py --unix_mode --strict --nojsdoc -r lib/ -r src/ -r test/
+	PYTHONPATH=tools/closure_linter/ python2 tools/closure_linter/closure_linter/gjslint.py --unix_mode --strict --nojsdoc -r lib/ -r src/ -r test/
 
 cpplint:
-	@python tools/cpplint.py $(wildcard src/*.cc src/*.h src/*.c)
+	@python2 tools/cpplint.py $(wildcard src/*.cc src/*.h src/*.c)
 
 lint: jslint cpplint
 
